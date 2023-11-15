@@ -26,7 +26,6 @@ public class CalculatorImpl implements Calculator {
 
 		StringTokenizer tokenizer = new StringTokenizer(infix, "+-*/()", true);
 		boolean wasPreviousTokenOperator = true;
-		boolean wasPreviousTokenOpeningParenthesis = false;
 
 		while (tokenizer.hasMoreTokens()) {
 			String token = tokenizer.nextToken().trim();
@@ -56,14 +55,7 @@ public class CalculatorImpl implements Calculator {
 					operatorStack.pop();
 				}
 			}
-
-			// Append unary minus directly without a space before it
-//			if (firstChar == '-' && (wasPreviousTokenOperator || wasPreviousTokenOpeningParenthesis)) {
-//				postfix.append(firstChar);
-//			}
-
 			wasPreviousTokenOperator = isOperator(firstChar) || firstChar == '(';
-			wasPreviousTokenOpeningParenthesis = firstChar == '(';
 		}
 
 		while (!operatorStack.isEmpty()) {
