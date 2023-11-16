@@ -194,4 +194,22 @@ class CalculatorImplTest {
 		double result = formula.calculate("1.+1");
 		Assertions.assertEquals(2, result, 0);
 	}
+
+	@Test
+	void testSqrt() {
+		double result = formula.calculate("sqrt(25)");
+		Assertions.assertEquals(5, result, 0);
+	}
+
+	@Test
+	void testExpo() {
+		double result = formula.calculate("5^2");
+		Assertions.assertEquals(25, result, 0);
+	}
+
+	@Test
+	void testComplexExpoSqrt() {
+		double result = formula.calculate("5^2 + sqrt(25)");
+		Assertions.assertEquals(30, result, 0);
+	}
 }
