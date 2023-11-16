@@ -55,12 +55,6 @@ public class CalculatorImpl implements Calculator {
 					operatorStack.pop();
 				}
 			}
-//			else if (firstChar == 's') {
-//				tokenizer.nextToken();
-//				operatorStack.push('s');
-//			} else if (firstChar == '^') {
-//				operatorStack.push('^');
-//			}
 			wasPreviousTokenOperator = isOperator(firstChar) || firstChar == '(';
 		}
 
@@ -81,8 +75,8 @@ public class CalculatorImpl implements Calculator {
 			if (isNumeric(token)) {
 				operandStack.push(Double.parseDouble(token));
 			} else if (isOperator(token.charAt(0))) {
-				double operand2 = (operandStack.size() > 0) ? operandStack.pop() : 0;
-				double operand1 = (token.charAt(0) == 's') ? 0 : (operandStack.size() > 0) ? operandStack.pop() : 1;
+				double operand2 = (!operandStack.isEmpty()) ? operandStack.pop() : 0;
+				double operand1 = (token.charAt(0) == 's') ? 0 : (!operandStack.isEmpty()) ? operandStack.pop() : 1;
 				operandStack.push(performOperation(operand1, operand2, token.charAt(0)));
 			}
 		}
