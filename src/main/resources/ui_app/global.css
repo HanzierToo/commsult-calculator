@@ -1,0 +1,76 @@
+VBox {
+    -fx-background-color: #E2D4D1;
+}
+
+.grid-pane {
+    /*-fx-content-display: ;*/
+}
+
+.formula-input {
+    -fx-border-radius: 10px;
+    -fx-border-color: #905548;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+    -fx-max-width: 300px;
+}
+
+.result-history {
+    -fx-text-alignment: center;
+    -fx-background-color: #f3f3f3;
+    -fx-padding: 10px;
+    -fx-max-width: 300px;
+    -fx-max-height: 2px;
+    -fx-font-size: 10px;
+}
+
+.result-slot {
+    -fx-border-style: hidden;
+    -fx-background-color: #f3f3f3;
+}
+
+.keypad-button {
+    -fx-border-color: gray;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-background-color: white;
+    -fx-min-height: 45px;
+    -fx-min-width: 45px;
+    -fx-font-size: 14px;
+}
+
+.keypad-button:hover {
+    -fx-background-color: lightgray;
+    -fx-cursor: pointer;
+}
+
+.keypad-button-backspace {
+    -fx-border-color: gray;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-background-color: white;
+    -fx-min-height: 45px;
+    -fx-min-width: 45px;
+    -fx-font-size: 18px;
+}
+
+.keypad-button-backspace:hover {
+    -fx-background-color: lightgray;
+    -fx-cursor: pointer;
+}
+
+.calculate-button {
+    -fx-border-color: gray;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-text-fill: white;
+    -fx-min-height: 45px;
+    -fx-min-width: 45px;
+    -fx-background-color: #905548;
+    -fx-font-size: 14px;
+}
+
+.calculate-button:hover {
+    -fx-background-color: #D6AAA0;
+    -fx-cursor: pointer;
+}
