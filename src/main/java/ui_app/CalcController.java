@@ -44,14 +44,6 @@ public class CalcController {
         resultTooltip5.setHideDelay(Duration.millis(100));
         mainGrid.setVgap(10);
         keypadGrid.setHgap(30);
-        formulaInput.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-                    onCalculateButtonClick();
-                }
-            }
-        });
     }
 
     @FXML

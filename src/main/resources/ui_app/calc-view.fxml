@@ -19,7 +19,7 @@
     <GridPane style="-fx-alignment: center" fx:id="mainGrid">
 
         <Label text="Formula Input" GridPane.rowIndex="0" />
-        <TextField promptText="(i.e., 4 + 6 + 9 - 3 * 20 / (4))" fx:id="formulaInput" styleClass="formula-input" GridPane.rowIndex="1" />
+        <TextField promptText="(i.e., 4 + 6 + 9 - 3 * 20 / (4))" fx:id="formulaInput" styleClass="formula-input" GridPane.rowIndex="1" onAction="#onCalculateButtonClick" />
         <Label text="Result History" GridPane.rowIndex="2" />
         <GridPane styleClass="result-history" style="-fx-hgap: 20px" GridPane.rowIndex="3">
             <Button styleClass="result-slot" fx:id="resultSlot1" GridPane.columnIndex="0"><tooltip><Tooltip fx:id="resultTooltip1" /></tooltip></Button>
