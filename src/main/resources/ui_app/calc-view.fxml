@@ -18,9 +18,9 @@
 
     <GridPane style="-fx-alignment: center" fx:id="mainGrid">
 
-        <Label text="Formula Input" GridPane.rowIndex="0" />
+        <Label text="Formula Input" GridPane.rowIndex="0" style="-fx-text-fill: white; -fx-font-weight: bold" />
         <TextField promptText="(i.e., 4 + 6 + 9 - 3 * 20 / (4))" fx:id="formulaInput" styleClass="formula-input" GridPane.rowIndex="1" onAction="#onCalculateButtonClick" />
-        <Label text="Result History" GridPane.rowIndex="2" />
+        <Label text="Result History" GridPane.rowIndex="2" style="-fx-text-fill: white; -fx-font-weight: bold" />
         <GridPane styleClass="result-history" style="-fx-hgap: 20px" GridPane.rowIndex="3">
             <Button styleClass="result-slot" fx:id="resultSlot1" GridPane.columnIndex="0"><tooltip><Tooltip fx:id="resultTooltip1" /></tooltip></Button>
             <Button styleClass="result-slot" fx:id="resultSlot2" GridPane.columnIndex="1"><tooltip><Tooltip fx:id="resultTooltip2" /></tooltip></Button>
@@ -32,32 +32,32 @@
         <GridPane style="-fx-alignment: center" fx:id="keypadGrid" GridPane.rowIndex="4">
             <GridPane GridPane.columnIndex="0">
                 <!-- Numpad -->
-                <Button GridPane.columnIndex="0" GridPane.rowIndex="0" text="1" styleClass="keypad-button" onAction="#onClickKeypad1" />
+                <Button GridPane.columnIndex="0" GridPane.rowIndex="0" text="1" styleClass="keypad-button-alt" onAction="#onClickKeypad1" />
                 <Button GridPane.columnIndex="1" GridPane.rowIndex="0" text="2" styleClass="keypad-button" onAction="#onClickKeypad2" />
-                <Button GridPane.columnIndex="2" GridPane.rowIndex="0" text="3" styleClass="keypad-button" onAction="#onClickKeypad3" />
+                <Button GridPane.columnIndex="2" GridPane.rowIndex="0" text="3" styleClass="keypad-button-alt" onAction="#onClickKeypad3" />
                 <Button GridPane.columnIndex="0" GridPane.rowIndex="1" text="4" styleClass="keypad-button" onAction="#onClickKeypad4" />
-                <Button GridPane.columnIndex="1" GridPane.rowIndex="1" text="5" styleClass="keypad-button" onAction="#onClickKeypad5" />
+                <Button GridPane.columnIndex="1" GridPane.rowIndex="1" text="5" styleClass="keypad-button-alt" onAction="#onClickKeypad5" />
                 <Button GridPane.columnIndex="2" GridPane.rowIndex="1" text="6" styleClass="keypad-button" onAction="#onClickKeypad6" />
-                <Button GridPane.columnIndex="0" GridPane.rowIndex="2" text="7" styleClass="keypad-button" onAction="#onClickKeypad7" />
+                <Button GridPane.columnIndex="0" GridPane.rowIndex="2" text="7" styleClass="keypad-button-alt" onAction="#onClickKeypad7" />
                 <Button GridPane.columnIndex="1" GridPane.rowIndex="2" text="8" styleClass="keypad-button" onAction="#onClickKeypad8" />
-                <Button GridPane.columnIndex="2" GridPane.rowIndex="2" text="9" styleClass="keypad-button" onAction="#onClickKeypad9" />
+                <Button GridPane.columnIndex="2" GridPane.rowIndex="2" text="9" styleClass="keypad-button-alt" onAction="#onClickKeypad9" />
                 <Button GridPane.columnIndex="0" GridPane.rowIndex="3" text="00" styleClass="keypad-button" onAction="#onClickKeypad00" />
-                <Button GridPane.columnIndex="1" GridPane.rowIndex="3" text="0" styleClass="keypad-button" onAction="#onClickKeypad0" />
+                <Button GridPane.columnIndex="1" GridPane.rowIndex="3" text="0" styleClass="keypad-button-alt" onAction="#onClickKeypad0" />
                 <Button GridPane.columnIndex="2" GridPane.rowIndex="3" text="." styleClass="keypad-button" onAction="#onClickKeypadPeriod" />
             </GridPane>
 
             <GridPane GridPane.columnIndex="1">
                 <!-- Operators + Special Keys -->
                 <Button GridPane.columnIndex="0" GridPane.rowIndex="0" text="🔙" styleClass="keypad-button-backspace" onAction="#onClickKeypadBackspace" />
-                <Button GridPane.columnIndex="1" GridPane.rowIndex="0" text="(" styleClass="keypad-button" onAction="#onClickKeypadOpenParenthesis" />
+                <Button GridPane.columnIndex="1" GridPane.rowIndex="0" text="(" styleClass="keypad-button-alt" onAction="#onClickKeypadOpenParenthesis" />
                 <Button GridPane.columnIndex="2" GridPane.rowIndex="0" text=")" styleClass="keypad-button" onAction="#onClickKeypadCloseParenthesis" />
-                <Button GridPane.columnIndex="0" GridPane.rowIndex="1" text="+" styleClass="keypad-button" onAction="#onClickKeypadAdd" />
+                <Button GridPane.columnIndex="0" GridPane.rowIndex="1" text="+" styleClass="keypad-button-alt" onAction="#onClickKeypadAdd" />
                 <Button GridPane.columnIndex="1" GridPane.rowIndex="1" text="-" styleClass="keypad-button" onAction="#onClickKeypadSubtract" />
-                <Button GridPane.columnIndex="2" GridPane.rowIndex="1" text="CE" styleClass="keypad-button" onAction="#onClickKeypadClear" />
+                <Button GridPane.columnIndex="2" GridPane.rowIndex="1" text="CE" styleClass="keypad-button-alt" onAction="#onClickKeypadClear" />
                 <Button GridPane.columnIndex="0" GridPane.rowIndex="2" text="*" styleClass="keypad-button" onAction="#onClickKeypadMultiply" />
-                <Button GridPane.columnIndex="1" GridPane.rowIndex="2" text="/" styleClass="keypad-button" onAction="#onClickKeypadDivide" />
+                <Button GridPane.columnIndex="1" GridPane.rowIndex="2" text="/" styleClass="keypad-button-alt" onAction="#onClickKeypadDivide" />
                 <Button GridPane.columnIndex="2" GridPane.rowIndex="2" text="AC" styleClass="keypad-button" onAction="#onClickKeypadAllClear" />
-                <Button GridPane.columnIndex="0" GridPane.rowIndex="3" text="^" styleClass="keypad-button" onAction="#onClickKeypadExponent" />
+                <Button GridPane.columnIndex="0" GridPane.rowIndex="3" text="^" styleClass="keypad-button-alt" onAction="#onClickKeypadExponent" />
                 <Button GridPane.columnIndex="1" GridPane.rowIndex="3" text="√" styleClass="keypad-button" onAction="#onClickKeypadSquareRoot" />
                 <Button GridPane.columnIndex="2" GridPane.rowIndex="3" text="=" styleClass="calculate-button" onAction="#onCalculateButtonClick" />
             </GridPane>
