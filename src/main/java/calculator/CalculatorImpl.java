@@ -24,7 +24,7 @@ public class CalculatorImpl implements Calculator {
 		StringBuilder postfix = new StringBuilder();
 		Stack<Character> operatorStack = new Stack<>();
 
-		StringTokenizer tokenizer = new StringTokenizer(infix, "+-*/()", true);
+		StringTokenizer tokenizer = new StringTokenizer(infix, "+-*/^sqrt()", true);
 		boolean wasPreviousTokenOperator = true;
 
 		while (tokenizer.hasMoreTokens()) {
@@ -55,6 +55,12 @@ public class CalculatorImpl implements Calculator {
 					operatorStack.pop();
 				}
 			}
+//			else if (firstChar == 's') {
+//				tokenizer.nextToken();
+//				operatorStack.push('s');
+//			} else if (firstChar == '^') {
+//				operatorStack.push('^');
+//			}
 			wasPreviousTokenOperator = isOperator(firstChar) || firstChar == '(';
 		}
 
@@ -75,8 +81,8 @@ public class CalculatorImpl implements Calculator {
 			if (isNumeric(token)) {
 				operandStack.push(Double.parseDouble(token));
 			} else if (isOperator(token.charAt(0))) {
-				double operand2 = operandStack.pop();
-				double operand1 = operandStack.pop();
+				double operand2 = (operandStack.size() > 0) ? operandStack.pop() : 0;
+				double operand1 = (token.charAt(0) == 's') ? 0 : (operandStack.size() > 0) ? operandStack.pop() : 1;
 				operandStack.push(performOperation(operand1, operand2, token.charAt(0)));
 			}
 		}
@@ -94,7 +100,7 @@ public class CalculatorImpl implements Calculator {
 	}
 
 	private static boolean isOperator(char ch) {
-		return ch == '+' || ch == '-' || ch == '*' || ch == '/';
+		return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == 's' || ch == '^';
 	}
 
 	private static int precedence(char operator) {
@@ -105,6 +111,9 @@ public class CalculatorImpl implements Calculator {
 			case '*':
 			case '/':
 				return 2;
+			case '^':
+			case 's':
+				return 3;
 			default:
 				return 0;
 		}
@@ -123,6 +132,10 @@ public class CalculatorImpl implements Calculator {
 					throw new ArithmeticException("Division by zero");
 				}
 				return operand1 / operand2;
+			case 's':
+				return Math.sqrt(operand2);
+			case '^':
+				return Math.pow(operand1, operand2);
 			default:
 				throw new IllegalArgumentException("Invalid operator: " + operator);
 		}
