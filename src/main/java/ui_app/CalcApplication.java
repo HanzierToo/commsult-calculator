@@ -12,9 +12,12 @@ import java.util.Objects;
 public class CalcApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        // Sets app icon.
         stage.getIcons().add(new Image(Objects.requireNonNull(CalcApplication.class.getResourceAsStream("icon.png"))));
+
+        // Loads the FXML protocol. The project uses FXML as the main development language/library.
         FXMLLoader fxmlLoader = new FXMLLoader(CalcApplication.class.getResource("calc-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 420, 420);
+        Scene scene = new Scene(fxmlLoader.load(), 420, 420); // Sets window size.
         scene.getStylesheets().add(Objects.requireNonNull(CalcApplication.class.getResource("global.css")).toExternalForm());
         stage.setTitle("Commsult Calculator Demo");
         stage.setScene(scene);

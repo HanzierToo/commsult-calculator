@@ -10,14 +10,17 @@
 <?import javafx.scene.layout.GridPane?>
 
 <?import javafx.scene.control.Tooltip?>
+<!-- Sets main stage -->
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="ui_app.CalcController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
+    <!--  Main content pane, it's GridPane for easier organization  -->
     <GridPane style="-fx-alignment: center" fx:id="mainGrid">
 
+        <!-- Main inputs and labels -->
         <Label text="Formula Input" GridPane.rowIndex="0" style="-fx-text-fill: white; -fx-font-weight: bold" />
         <TextField promptText="(i.e., 4 + 6 + 9 - 3 * 20 / (4))" fx:id="formulaInput" styleClass="formula-input" GridPane.rowIndex="1" onAction="#onCalculateButtonClick" />
         <Label text="Result History" GridPane.rowIndex="2" style="-fx-text-fill: white; -fx-font-weight: bold" />

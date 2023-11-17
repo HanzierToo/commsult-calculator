@@ -1,34 +1,37 @@
 package ui_app;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
 import java.util.Objects;
 
 public class CalcController {
-    CalcInputSanitation sanitizer = new CalcInputSanitation();
-    int leastRecentSlot = 0;
+    CalcInputSanitation sanitizer = new CalcInputSanitation(); // Misnomer, meant to clean the String but
+                                                               // limited by implementation. Prevents return
+                                                               // errors and allows limited error handling.
+    int leastRecentSlot = 0; // Used to determine which slot in result history was used least recently.
+                             // Allows the result history logic to wipe it and reset it.
 
-    @FXML private TextField formulaInput;
-    @FXML private Button resultSlot1;
+    // Future self note: These are how JavaFX (FXML) accesses the variables within the FXML code.
+    // Similar to JS's object finding method, but more direct and easier (really good actually).
+    @FXML private TextField formulaInput; // Main TextField input element.
+    @FXML private Button resultSlot1; // Text for buttons which store the results of the user's calculations.
     @FXML private Button resultSlot2;
     @FXML private Button resultSlot3;
     @FXML private Button resultSlot4;
     @FXML private Button resultSlot5;
-    @FXML private Tooltip resultTooltip1;
-    @FXML private Tooltip resultTooltip2;
-    @FXML private Tooltip resultTooltip3;
-    @FXML private Tooltip resultTooltip4;
+    @FXML private Tooltip resultTooltip1; // Hovering over the pseudo-buttons (faked for easier management)
+    @FXML private Tooltip resultTooltip2; // will allow the user to see what formula they used to get that answer.
+    @FXML private Tooltip resultTooltip3; // This is still limited as the original intent was to allow users to click
+    @FXML private Tooltip resultTooltip4; // and copy the formulas, but the project was rushed.
     @FXML private Tooltip resultTooltip5;
-    @FXML private GridPane mainGrid;
-    @FXML private GridPane keypadGrid;
+    @FXML private GridPane mainGrid; // Organizational element, allows for better layout given poor knowledge/understanding.
+                                     // Handles both the main keypad (numbers) and operators (special chars).
+    @FXML private GridPane keypadGrid; // Organizational element, handles main keypad.
 
     @FXML
     public void initialize() {
@@ -42,23 +45,29 @@ public class CalcController {
         resultTooltip4.setHideDelay(Duration.millis(100));
         resultTooltip5.setShowDelay(Duration.millis(100));
         resultTooltip5.setHideDelay(Duration.millis(100));
-        mainGrid.setVgap(10);
+        // Spaghetti. I know. This code is in spite of a better method, but it allows
+        // tooltips to appear and disappear faster.
+
+        mainGrid.setVgap(10); // Pseudo-Padding/Margins
         keypadGrid.setHgap(30);
     }
 
     @FXML
     protected void onCalculateButtonClick() {
-        String formula = formulaInput.getText();
-        String result = sanitizer.sanitise(formula);
-        boolean slotCheck1 = resultSlot1.getText().isEmpty();
+        String formula = formulaInput.getText(); // Gets text from the TextField input
+        String result = sanitizer.sanitise(formula); // Calls the function to actually get the result of calculation.
+        boolean slotCheck1 = resultSlot1.getText().isEmpty(); // Stores boolean for result history, allows shorthand
         boolean slotCheck2 = resultSlot2.getText().isEmpty();
         boolean slotCheck3 = resultSlot3.getText().isEmpty();
         boolean slotCheck4 = resultSlot4.getText().isEmpty();
         boolean slotCheck5 = resultSlot5.getText().isEmpty();
 
-        if(!Objects.equals(result, "ILL_OPERATION")) {
-            formulaInput.setText(result);
+        if(!Objects.equals(result, "ILL_OPERATION")) { // Checks for return from CalcInputSanitation.
+            formulaInput.setText(result); // Prints the result to the TextField if not error.
 
+            // Initial slots will all be empty, these are the if statements.
+            // The switch statement handles the case that all the slots are occupied.
+            // Spaghetti Monster logic. It works, but it's bad.
             if (slotCheck1 && leastRecentSlot == 0) {
                 resultSlot1.setText(result);
                 resultTooltip1.setText(formula);
@@ -112,6 +121,7 @@ public class CalcController {
             }
         } else {
             formulaInput.setText("Input cannot be empty nor contain letters or special characters.");
+            // Pseudo-error handling
         }
     }
 
