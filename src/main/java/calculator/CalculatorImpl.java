@@ -5,6 +5,9 @@ import java.util.StringTokenizer;
 
 public class CalculatorImpl implements Calculator {
 
+//	This method is the entry point for calculating a mathematical expression.
+//	It calls the evaluateExpression method and catches any exceptions,
+//	returning 0 if an exception occurs.
 	@Override
 	public double calculate(String formula) {
 		double result = evaluateExpression(formula);
@@ -20,6 +23,9 @@ public class CalculatorImpl implements Calculator {
 		return evaluatePostfix(postfix);
 	}
 
+// This method takes an infix mathematical expression as input,
+// converts it to postfix notation using the infixToPostfix method.
+// For example: the equation is 4 + 3 * 2 so it will return -> 4 3 2 * +
 	private static String infixToPostfix(String infix) {
 		StringBuilder postfix = new StringBuilder();
 		Stack<Character> operatorStack = new Stack<>();
@@ -41,6 +47,8 @@ public class CalculatorImpl implements Calculator {
 			} else if (Character.isDigit(firstChar)) {
 				postfix.append(token).append(" ");
 			} else if (isOperator(firstChar)) {
+//				And in this section it will check out the precedence of the operator,
+//				so that it put the highest precedence get pushed first
 				while (!operatorStack.isEmpty() && operatorStack.peek() != '(' && precedence(operatorStack.peek()) >= precedence(firstChar)) {
 					postfix.append(operatorStack.pop()).append(" ");
 				}
@@ -65,6 +73,8 @@ public class CalculatorImpl implements Calculator {
 		return postfix.toString().trim();
 	}
 
+//	This method converts an infix mathematical expression to postfix notation.
+//	It uses a Stack (operatorStack) to keep track of operators while traversing the input expression.
 	private static double evaluatePostfix(String postfix) {
 		Stack<Double> operandStack = new Stack<>();
 
@@ -84,6 +94,7 @@ public class CalculatorImpl implements Calculator {
 		return operandStack.pop();
 	}
 
+//	isNumeric(String str): Checks if a string represents a numeric value.
 	private static boolean isNumeric(String str) {
 		try {
 			Double.parseDouble(str);
@@ -93,10 +104,12 @@ public class CalculatorImpl implements Calculator {
 		}
 	}
 
+//	isOperator(char ch): Checks if a character is an operator (+, -, *, /, s for square root, ^ for exponentiation).
 	private static boolean isOperator(char ch) {
 		return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == 's' || ch == '^';
 	}
 
+//	precedence(char operator): Assigns precedence values to operators.
 	private static int precedence(char operator) {
 		switch (operator) {
 			case '+':
@@ -113,6 +126,7 @@ public class CalculatorImpl implements Calculator {
 		}
 	}
 
+//	performOperation(double operand1, double operand2, char operator): Performs the specified operation based on the operator.
 	private static double performOperation(double operand1, double operand2, char operator) {
 		switch (operator) {
 			case '+':
