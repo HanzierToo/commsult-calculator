@@ -37,7 +37,6 @@ This calculator was written in and handles doubles as the primary number format 
 |--|--|
 | Dylan Tirta Kurniawan | [Open JavaFX Community](https://openjfx.io/) |
 | Hendika Indrawinata Lukman | [FXDocs Team & Contributors](https://fxdocs.github.io/docs/html5/) |
-|  |  |
-<sup>*in collaboration with Commsult AG*</sup>
+| <sup>*in collaboration with Commsult AG*</sup> | <sup>*and Swiss German University*</sup> |
 
 Many thanks and sincerest appreciation to those in the JavaFX community for their countless contributions and documentation efforts, without whom this project would be significantly more stressful and less enjoyable.
